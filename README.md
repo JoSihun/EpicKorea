@@ -3,13 +3,13 @@
 ## 목차
 
 -   [Overview](#enjoytrip---epickorea)
--   [개발환경](#environment)
--   [ERDiagram](#ERDiagram)
--   [REST API](#REST-API)
+-   [Environment](#environment)
+-   [ERDiagram](#erdiagram)
+-   [REST API](#rest-api)
     -   [BOARD_TYPE](#board_type)
-    -   [BOARD](#BOARD)
-    -   [PLAN](#PLAN)
-    -   [FILEINFO](#FILEINFO)
+    -   [BOARD](#board)
+    -   [PLAN](#plan)
+    -   [FILEINFO](#fileinfo)
 -   [기본기능](#기본기능)
     -   [메인페이지](#메인페이지)
     -   [지역별여행지](#지역별여행지)
@@ -26,10 +26,6 @@
 # EnjoyTrip - `EpicKorea`
 
 > 공공데이터 포탈 및 카카오 API 등 외부 API를 활용한 여행정보제공 웹서비스
-
-[![NPM Version][npm-image]][npm-url]
-[![Build Status][travis-image]][travis-url]
-[![Downloads Stats][npm-downloads]][npm-url]
 
 ## Environment
 
@@ -51,9 +47,13 @@ $ npm install
 
 ![Alt text](images/ER_Diagram.png)
 
+[Top](#)
+
 # REST API
 
 기본적인 API외의 핵심적인 기능만 기재
+
+[Top](#)
 
 ## BOARD_TYPE
 
@@ -61,6 +61,8 @@ $ npm install
 -   추후의 확장성을 고려하여 CRUD 시스템 구성
 
 ![Alt text](images/board_type.png)
+
+[Top](#)
 
 ## BOARD
 
@@ -70,12 +72,16 @@ $ npm install
 
 ![Alt text](images/api_board.png)
 
+[Top](#)
+
 ## PLAN
 
 -   `BOARD`를 참조하여 여행계획 데이터를 관리하고, 세부 관광지 정보를 순서대로 관리
 -   즉, `PLAN`테이블은 `BOARD:ATTRACTION = N:M` 관계를 위한 중간 참조테이블
 
-    ![Alt text](images/api_plan.png)
+![Alt text](images/api_plan.png)
+
+[Top](#)
 
 ## FILEINFO
 
@@ -83,6 +89,8 @@ $ npm install
 -   첨부파일 다운로드 & 썸네일 이미지 다운로드로 동시에 사용가능
 
 ![Alt text](images/api_attach.png)
+
+[Top](#)
 
 # 기본기능
 
@@ -111,23 +119,47 @@ ORDER BY A.readcount DESC;
 
 ![Alt text](images/index.png)
 
+[Top](#)
+
 ## 지역별여행지
+
+[Top](#)
 
 ## 나의여행계획
 
--   ![Alt text](images/plan.png)
+![Alt text](images/plan.png)
+![Alt text](images/plan_write.png)
+![Alt text](images/plan_detail.png)
+
+[Top](#)
 
 ## 핫플자랑하기
 
+-   조회수를 기준으로 내림차순 정렬하여 인기가 많은 관광지 순으로 나열
+-   썸네일 이미지를 등록해야 게시글이 작성되도록 구현
+-   댓글 등록 기능 제공
+
 ![Alt text](images/hotplace.png)
+![Alt text](images/hotplace_detail.png)
+
+[Top](#)
 
 ## 여행지정보공유
 
+-   다중 첨부파일 업로드 기능 제공
+-   댓글 등록 기능 제공
+
 ![Alt text](images/share.png)
+![Alt text](images/share_write.png)
+![Alt text](images/share_detail.png)
+
+[Top](#)
 
 # 추가기능
 
 ## 카카오 지도 API(외부API)
+
+[Top](#)
 
 ## 랜덤이미지 API(외부API)
 
@@ -164,3 +196,5 @@ export const useImageStore = defineStore('image', () => {
     return { srcs1920x720, srcs1920x1080, getCarouselImage, getBackgroundImage };
 });
 ```
+
+[Top](#)
