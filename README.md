@@ -170,6 +170,8 @@ ORDER BY A.readcount DESC;
 
 ## 카카오 지도 API(외부API)
 
+-   거리계산 기능 제공
+
 ```javascript
 // 마우스 클릭으로 그린 선의 좌표 배열을 얻어옵니다
 var path = clickLine.getPath();
