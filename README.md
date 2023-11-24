@@ -170,6 +170,42 @@ ORDER BY A.readcount DESC;
 
 ## 카카오 지도 API(외부API)
 
+```javascript
+// 마우스 클릭으로 그린 선의 좌표 배열을 얻어옵니다
+var path = clickLine.getPath();
+
+// 선을 구성하는 좌표의 개수가 2개 이상이면
+if (path.length > 1) {
+// 마지막 클릭 지점에 대한 거리 정보 커스텀 오버레이를 지웁니다
+if (dots[dots.length - 1].distance) {
+    dots[dots.length - 1].distance.setMap(null);
+    dots[dots.length - 1].distance = null;
+}
+
+var distance = Math.round(clickLine.getLength()), // 선의 총 거리를 계산합니다
+    content = getTimeHTML(distance); // 커스텀오버레이에 추가될 내용입니다
+```
+
+```javascript
+// 거리 구하기
+function distance(lat1, lon1, lat2, lon2) {
+    const R = 6371; // 지구 반지름 (단위: km)
+    const dLat = deg2rad(lat2 - lat1);
+    const dLon = deg2rad(lon2 - lon1);
+    const a =
+        Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+        Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    const distance = R * c; // 두 지점 간의 거리 (단위: km)
+    console.log(distance);
+    return distance;
+}
+
+function deg2rad(deg) {
+    return deg * (Math.PI / 180);
+}
+```
+
 [Top](#)
 
 ## 랜덤이미지 API(외부API)
